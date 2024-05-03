@@ -11,6 +11,8 @@ import Contact from './Components/Contact/Contact';
 import Users from './Components/Users/Users';
 import Posts from './Components/Posts/Posts';
 import PostDetails from './Components/PostDetails/PostDetails';
+import Todos from './Components/Todos/Todos';
+import TodoDetails from './Components/TodoDetails/TodoDetails';
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,19 @@ const router = createBrowserRouter([
         path: "/post/:postId",
         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         element: <PostDetails></PostDetails>
+      },
+
+
+      {
+        path: "/todos",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/todos"),
+        element: <Todos></Todos>
+      },
+
+      {
+        path: "/todo/:todoId",
+        loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/todos/${params.todoId}`),
+        element: <TodoDetails></TodoDetails>
       }
     ]
   },
