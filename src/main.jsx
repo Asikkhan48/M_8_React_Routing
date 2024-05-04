@@ -13,12 +13,14 @@ import Posts from './Components/Posts/Posts';
 import PostDetails from './Components/PostDetails/PostDetails';
 import Todos from './Components/Todos/Todos';
 import TodoDetails from './Components/TodoDetails/TodoDetails';
+import ErrorPage from './ErrorPage/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <ErrorPage></ErrorPage>,
     children:[
       {
         path: "/about",
@@ -43,14 +45,11 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         element: <PostDetails></PostDetails>
       },
-
-
       {
         path: "/todos",
         loader: () => fetch("https://jsonplaceholder.typicode.com/todos"),
         element: <Todos></Todos>
       },
-
       {
         path: "/todo/:todoId",
         loader: ({params}) => fetch(`https://jsonplaceholder.typicode.com/todos/${params.todoId}`),
